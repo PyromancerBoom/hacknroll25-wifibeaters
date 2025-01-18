@@ -10,7 +10,7 @@ interface SongPageProps {
 const SongPage: React.FC<SongPageProps> = ({ text }) => {
   const navigate = useNavigate();
   const location = useLocation();
-  const texty = location.state?.text || "No text provided.";
+  const texty = location.state?.extractedText || "No text provided.";
 
   return (
     <div className="container">
