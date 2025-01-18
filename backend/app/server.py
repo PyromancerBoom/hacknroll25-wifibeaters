@@ -9,7 +9,7 @@ load_dotenv()
 app = FastAPI()
 
 # Add CORS middleware
-origins = ["http://0.0.0.0:3000", "*", "http://localhost:3000/"]
+origins = ["http://0.0.0.0:8000", "*", "http://localhost:8000/"]
 
 app.add_middleware(
     CORSMiddleware,
