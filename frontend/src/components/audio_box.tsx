@@ -112,7 +112,7 @@ const AudioGrid = () => {
       <div className="mb-6">
         <button
           onClick={() => fileInputRef.current?.click()}
-          className="white-background"
+          className="white-background "
         >
           <Plus size={20} />
           Add Audio Files

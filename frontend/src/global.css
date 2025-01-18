@@ -19,18 +19,6 @@
   display: inline-block;
 }
 
-.highlight-start,
-.highlight-end {
-  background-image: url('./assets/image.jpg');
-  background-size: contain;
-  background-repeat: no-repeat;
-  display: inline-block;
-  height: 20px;
-  width: 20px;
-  vertical-align: middle;
-  position: absolute;
-  cursor: grab;
-}
 
 .left-align {
   float:left;
