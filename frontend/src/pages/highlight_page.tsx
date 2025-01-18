@@ -71,22 +71,38 @@ const HighlightPage: React.FC = () => {
     audioRefs.current.forEach((audio, index) => {
       audio.src = audioFiles[index] || '';
     });
-
+  
     // Play the first audio immediately on mount
     const firstAudio = audioRefs.current[0];
     if (firstAudio) {
       firstAudio.volume = 1;
       firstAudio.play().catch((err) => console.error("Audio playback error:", err));
     }
-
+  
+    // Add event listeners for keydown events
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "ArrowLeft") {
+        handleArrowClick("left");
+      } else if (event.key === "ArrowRight") {
+        handleArrowClick("right");
+      } else if (event.key === " ") {  // Spacebar to move to the next slide
+        handleArrowClick("right");
+      }
+    };
+  
+    window.addEventListener("keydown", handleKeyDown);
+  
     return () => {
-      // Stop all audio when leaving the page
+      window.removeEventListener("keydown", handleKeyDown);
+  
+      // Cleanup audio when leaving the page
       audioRefs.current.forEach((audio) => {
         audio.pause();
         audio.currentTime = 0;
       });
     };
-  }, []);
+  }, [currentSlide]);
+  
 
   return (
     <div className="container">
