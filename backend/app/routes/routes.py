@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Request
 from app.services.llm import call_llm
-from app.services.text_classifier import classify_sample_text, format_text
+from app.services.text_classifier import classify_sample_text, process_text
 from app.utils.prompts import joke_prompt
 router = APIRouter()
 
@@ -21,9 +21,9 @@ async def classify_sample():
 @router.post("/classifytext")
 async def classifytext(request: Request):
     data = await request.json()
-    print("Data received:", data)
+    # print("Data received:", data)
     extractedText = data.get("text")
 
     word_limit = 200
-    chunked_text, chunks = format_text(extractedText, word_limit)
-    return {"status": "success", "formatted_text": chunked_text, "chunks": chunks}
+    classified_chunks = process_text(extractedText, word_limit)
+    return {"status": "success", "classified_chunks": classified_chunks}
