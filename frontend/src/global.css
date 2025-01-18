@@ -107,10 +107,10 @@ body {
 }
 
 .container {
-  width: 80%;
-  max-width: 1200px;
+  width: 85%;
+  max-width: 1500px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 50px;
   background-color: #1a1a1a;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
@@ -124,22 +124,30 @@ h1 {
 button {
   border-radius: 8px;
   border: 1px solid transparent;
-  padding: 0.6em 1.2em;
+  padding: 0.8em 1.5em;
+  margin: 1em 0;
   font-size: 1em;
-  font-weight: 500;
+  font-weight: 600;
   font-family: inherit;
   background-color: #1a1a1a;
+  color: #ffffff;
   cursor: pointer;
-  transition: border-color 0.25s;
+  transition: background-color 0.3s, border-color 0.3s, transform 0.2s;
 }
 
 button:hover {
+  background-color: #646cff;
   border-color: #646cff;
+  transform: scale(1.05);
 }
 
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
+}
+
+button:active {
+  transform: scale(0.95);
 }
 
 @media (prefers-color-scheme: light) {
