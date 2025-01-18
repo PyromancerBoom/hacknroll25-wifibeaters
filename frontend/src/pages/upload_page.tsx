@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import pdfToText from 'react-pdftotext';
 import { useNavigate } from "react-router-dom";
 import config from '../../config.json';
@@ -19,8 +19,8 @@ const UploadPage: React.FC = () => {
         return;
     }
 
-    if (file.size > 10 * 1024 * 1024) {
-        setError("File size exceeds the 10MB limit.");
+    if (file.size > 2 * 1024 * 1024) {
+        setError("File size exceeds the 2MB limit.");
         setSelectedFile(null);
         setPdfUrl(null);
         return;
@@ -47,7 +47,6 @@ const UploadPage: React.FC = () => {
     if (selectedFile) {
       try {
         const extractedText = await pdfToText(selectedFile);
-        // console.log("FOUND THIS -------- " + extractedText)
         try {
             const response = await fetch(`${config.backendUrl}/usertext`, {
                 method: 'POST',
@@ -80,13 +79,16 @@ const UploadPage: React.FC = () => {
   const fileInputRef = React.useRef<HTMLInputElement>(null);
 
   return (
+    
+    
     <div className="container">
-      <h1 className = "white-shadowed-text">Insert Project Name 🎵</h1>
-      <h3 className = "white-shadowed-text">Subtitle here very cool very nice</h3>
+      <script src="particles.js"></script>
+      <h1 className = "white-shadowed-text"> TunedIN 🎙️</h1>
+      <h3 className = "white-shadowed-text">A project generating entertaining and emotionally fitting background music from text-derived sentiments while displaying usually-boring reading material in flashcard-style. It doubles as a tool aiding in content-generation (podcasts, storytime videos) in deciding on music track progression.</h3>
       <button onClick={() => fileInputRef.current?.click()} className="white-background shadowed-text">
         Select PDF File
       </button>
-      <button onClick={handleSubmit} className = "white-background float-right shadowe  d-text">Submit</button>
+      <button onClick={handleSubmit} className = "float-right white-background shadowe d-text">Submit</button>
       <input
         type="file"
         ref={fileInputRef}
@@ -94,7 +96,7 @@ const UploadPage: React.FC = () => {
         accept="application/pdf"
         style={{ display: 'none' }}
       />
-      {error && <p className="text-red-500 mt-2">{error}</p>}
+      {error && <p className="mt-2 text-red-500">{error}</p>}
       {pdfUrl && (
         <div style={{ height: '600px', marginTop: '50px' }}>
           <iframe src={pdfUrl} width="100%" height="100%" />

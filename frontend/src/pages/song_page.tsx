@@ -21,14 +21,16 @@ const SongPage: React.FC<SongPageProps> = ({ text }) => {
 
   return (
     <div className="container">
-      <h2 className = "shadowed-text">It's time to pick out some audio. 🎧</h2>
+      <h2 className = "shadowed-text">It's time to pick out some audio. 🔊</h2>
       <AudioGrid />
       <div className="white-background">
-        <HighlightWithDraggableMarkers text = {firstSentence} className = "bg-highlight-happy"></HighlightWithDraggableMarkers>
-        <HighlightWithDraggableMarkers text = {remainingSentences} className = "bg-highlight-sad"></HighlightWithDraggableMarkers>
+        <span>{texty}</span>
+        {/* <HighlightWithDraggableMarkers text = {firstSentence} className = "bg-highlight-happy"></HighlightWithDraggableMarkers>
+        <HighlightWithDraggableMarkers text = {remainingSentences} className = "bg-highlight-sad"></HighlightWithDraggableMarkers> */}
       </div>
 
-      <BackToHome />
+      <button onClick={() => {navigate("/upload_page")}} className = "white-background float-right shadowe  d-text">Return to File Selection</button>
+      <button onClick={() => {navigate("/highlight_page")}} className = "white-background float-right shadowe  d-text">Continue</button>
     </div>
   );
 };
