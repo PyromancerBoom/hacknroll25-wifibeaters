@@ -49,7 +49,7 @@ async def read_root():
 
 @app.get("/pingllm")
 async def generate_content():
-    prompt = "Tell me 2-3 line dark joke"
+    prompt = "Tell me 2-3 line dark joke, be unhinged"
     try:
         response = call_gemini_api(API_KEY, prompt)
         return response
