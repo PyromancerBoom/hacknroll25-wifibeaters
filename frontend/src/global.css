@@ -2,7 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-
+@font-face {
+  font-family: 'Circular Std';
+  src: url('./assets/fonts/circular-std-2.woff') format('woff');
+  font-weight: 900; /* Adjust this according to the font's weight */
+  font-style: normal; /* If you have other styles (italic, etc.), define them here */
+}
 
 .highlight-container {
   font-size: 16px;
@@ -119,7 +124,7 @@
 }
 
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Circular Std', sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
