@@ -25,7 +25,10 @@ const SongPage: React.FC<SongPageProps> = ({ text }) => {
   return (
     <div className="container">
       <h2 className = "shadowed-text">It's time to pick out some audio. 🔊</h2>
-      <AudioGrid />
+
+      {/* TODO: ADD BACK WHEN NEED PEOPLE TO ADD THEIR OWN SONGS
+      <AudioGrid />  */}
+
       <div className="white-background">
         <h3 className="font-bold">Extracted Text from PDF</h3>
         {/* <span className="bg-highlight-yellow">{texty}</span> */}

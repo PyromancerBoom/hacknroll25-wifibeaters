@@ -19,8 +19,8 @@ const UploadPage: React.FC = () => {
         return;
     }
 
-    if (file.size > 2 * 1024 * 1024) {
-        setError("File size exceeds the 2MB limit.");
+    if (file.size > 5 * 1024 * 1024) {
+        setError("File size exceeds the 5MB limit.");
         setSelectedFile(null);
         setPdfUrl(null);
         return;
