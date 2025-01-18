@@ -45,7 +45,7 @@ def call_gemini_api(api_key, prompt):
 
 @app.get("/")
 async def read_root():
-    return {"message": "Welcome to the FastAPI server"}
+    return {"message": "Ok, server is working fine, hit /pingllm to generate content"}
 
 @app.get("/pingllm")
 async def generate_content():
