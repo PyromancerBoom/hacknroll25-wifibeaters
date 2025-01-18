@@ -60,13 +60,12 @@ const UploadPage: React.FC = () => {
 
   return (
     <div className="container">
-      <h1>Insert Project Name 🎵</h1>
-      <h3>Subtitle here very cool very nice</h3>
-      <button onClick={() => fileInputRef.current?.click()} className="white-background">
+      <h1 className = "white-shadowed-text">Insert Project Name 🎵</h1>
+      <h3 className = "white-shadowed-text">Subtitle here very cool very nice</h3>
+      <button onClick={() => fileInputRef.current?.click()} className="white-background shadowed-text">
         Select PDF File
       </button>
-      <span>                                                                </span>
-      <button onClick={handleSubmit} className = "white-background float-right">Submit</button>
+      <button onClick={handleSubmit} className = "white-background float-right shadowe  d-text">Submit</button>
       <input
         type="file"
         ref={fileInputRef}
