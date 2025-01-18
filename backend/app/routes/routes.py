@@ -1,6 +1,7 @@
 from fastapi import APIRouter, Request
 from app.services.llm import call_llm
 from app.services.text_classifier import classify_sample_text, process_text
+from app.services.audio_matching import get_matching_music
 from app.utils.prompts import joke_prompt
 router = APIRouter()
 
@@ -27,4 +28,5 @@ async def classifytext(request: Request):
 
     word_limit = 200
     classified_chunks = process_text(extractedText, word_limit)
-    return {"status": "success", "classified_chunks": classified_chunks}
+    classified_chunks_with_music = get_matching_music(classified_chunks)
+    return {"status": "success", "classified_chunks": classified_chunks_with_music}
