@@ -18,8 +18,3 @@ async def classify_sample():
     response = classify_sample_text()
     return response
 
-# @router.get("/pingllm")
-# @router.post("/classify-emotion")
-# async def classify_emotion(text: str):
-#     response = call_llm(API_KEY, text)
-#     return response
