@@ -45,3 +45,20 @@ def classify_sample_text() -> List[Dict[str, str]]:
         classified_paragraphs.append({"paragraph": paragraph, "emotion": emotion})
 
     return classified_paragraphs
+
+def format_text(raw_text: str, word_limit: int = 10) -> str:
+    words = raw_text.split()
+    chunks = []
+    current_chunk = []
+
+    for word in words:
+        current_chunk.append(word)
+        if len(current_chunk) >= word_limit:
+            chunks.append(" ".join(current_chunk))
+            current_chunk = []
+
+    if current_chunk:
+        chunks.append(" ".join(current_chunk))
+
+    chunked_text = "\n".join(chunks)
+    return chunked_text
