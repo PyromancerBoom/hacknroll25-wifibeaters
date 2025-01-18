@@ -48,31 +48,34 @@ const UploadPage: React.FC = () => {
       try {
         const extractedText = await pdfToText(selectedFile);
         try {
-            const response = await fetch(`${config.backendUrl}/usertext`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ text: extractedText }),
-            });
-    
-            if (!response.ok) {
-                throw new Error('Failed to send text to backend');
-            }
-    
-            // Handle successful response
-            const data = await response.json();
-            console.log(data);
+          const response = await fetch(`${config.backendUrl}/classifytext`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ text: extractedText }),
+          });
+  
+          if (!response.ok) {
+            throw new Error('Failed to send text to backend');
+          }
+  
+          // Handle successful response
+          const data = await response.json();
+          
+          // TODO: UPDATE CODE HERE, the new format doens't include "formattedText"
+          const formattedText = data.formatted_text;
+          console.log(formattedText);
+          navigate("/song_page", { state: { formattedText } });
         } catch (error) {
-            setError(error.message);
+          setError(error.message);
         }
-        navigate("/song_page", { state: { extractedText } });
-    } catch (error) {
+      } catch (error) {
         console.error("Failed to extract text from PDF:", error);
         setError("Failed to extract text from PDF.");
-    }
+      }
     } else {
-        setError("Please upload a PDF file.");
+      setError("Please upload a PDF file.");
     }
   };
 

@@ -11,7 +11,10 @@ interface SongPageProps {
 const SongPage: React.FC<SongPageProps> = ({ text }) => {
   const navigate = useNavigate();
   const location = useLocation();
-  const texty = location.state?.extractedText || "No text provided.";
+  // const texty = location.state?.extractedText || "No text provided.";
+  const texty = location.state?.formattedText || "No text provided.";
+
+  const formattedText = texty.replace(/\n/g, "<br />");
 
   const sentenceRegex = /([^.?!]*[.?!])/g;
   const sentences = texty.match(sentenceRegex) || [];
@@ -24,13 +27,16 @@ const SongPage: React.FC<SongPageProps> = ({ text }) => {
       <h2 className = "shadowed-text">It's time to pick out some audio. 🔊</h2>
       <AudioGrid />
       <div className="white-background">
-        <span>{texty}</span>
-        {/* <HighlightWithDraggableMarkers text = {firstSentence} className = "bg-highlight-happy"></HighlightWithDraggableMarkers>
-        <HighlightWithDraggableMarkers text = {remainingSentences} className = "bg-highlight-sad"></HighlightWithDraggableMarkers> */}
+        <h3 className="font-bold">Extracted Text from PDF</h3>
+        {/* <span className="bg-highlight-yellow">{texty}</span> */}
+        <div
+          className="bg-highlight-yellow"
+          dangerouslySetInnerHTML={{ __html: formattedText }}
+        />
       </div>
 
-      <button onClick={() => {navigate("/upload_page")}} className = "white-background float-right shadowe  d-text">Return to File Selection</button>
-      <button onClick={() => {navigate("/highlight_page")}} className = "white-background float-right shadowe  d-text">Continue</button>
+      <button onClick={() => {navigate("/upload_page")}} className = "float-right white-background shadowe d-text">Return to File Selection</button>
+      <button onClick={() => {navigate("/highlight_page")}} className = "float-right white-background shadowe d-text">Continue</button>
     </div>
   );
 };
