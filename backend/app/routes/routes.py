@@ -1,4 +1,4 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, Request
 from app.services.llm import call_llm
 from app.services.text_classifier import classify_sample_text
 from app.utils.prompts import joke_prompt
@@ -18,3 +18,9 @@ async def classify_sample():
     response = classify_sample_text()
     return response
 
+@router.post("/usertext")
+async def usertext(request: Request):
+    data = await request.json()
+    text = data.get("text")
+    print(f"Received text: {text}")
+    return {"status": "success", "message": "Text received"}

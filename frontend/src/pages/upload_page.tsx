@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import pdfToText from 'react-pdftotext';
 import { useNavigate } from "react-router-dom";
+import config from '../../config.json';
 
 const UploadPage: React.FC = () => {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
@@ -44,13 +45,33 @@ const UploadPage: React.FC = () => {
 
   const handleSubmit = async () => {
     if (selectedFile) {
+      try {
+        const extractedText = await pdfToText(selectedFile);
+        // console.log("FOUND THIS -------- " + extractedText)
         try {
-            const text = await pdfToText(selectedFile);
-            navigate("/song_page", { state: { text } });
+            const response = await fetch(`${config.backendUrl}/usertext`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ text: extractedText }),
+            });
+    
+            if (!response.ok) {
+                throw new Error('Failed to send text to backend');
+            }
+    
+            // Handle successful response
+            const data = await response.json();
+            console.log(data);
         } catch (error) {
-            console.error("Failed to extract text from PDF:", error);
-            setError("Failed to extract text from PDF.");
+            setError(error.message);
         }
+        navigate("/song_page", { state: { extractedText } });
+    } catch (error) {
+        console.error("Failed to extract text from PDF:", error);
+        setError("Failed to extract text from PDF.");
+    }
     } else {
         setError("Please upload a PDF file.");
     }
