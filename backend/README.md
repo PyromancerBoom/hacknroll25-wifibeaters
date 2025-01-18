@@ -2,13 +2,21 @@ for backend
 
 ├── backend/ # Python Backend
 │ ├── app/
+│ │ ├── **pycache**/ # Compiled Python files
 │ │ ├── main.py # FastAPI app entry point
-│ │ ├── routes.py # All API endpoints
-│ │ ├── services.py # Core business logic
-│ │ ├── utils.py # Utility functions (e.g., text processing)
-│ │ ├── emotion_map.json # Maps emotions to predefined playlists
-│ ├── requirements.txt # Backend dependencies
+│ │ ├── repository/ # Database interaction logic
+│ │ ├── routes/ # API endpoints
+│ │ ├── services/ # Core business logic
+│ │ ├── utils/ # Utility functions (e.g., text processing)
 │ ├── .env # Environment variables
+│ ├── config.json # Configuration file
+│ ├── README.md # Documentation for the backend
+│ ├── requirements.txt # Backend dependencies
+│ ├── venv/ # Virtual environment
+│ │ ├── Include/ # C headers of the Python packages
+│ │ ├── Lib/ # Python packages
+│ │ ├── pyvenv.cfg # Virtual environment configuration
+│ │ ├── Scripts/ # Executable scripts and binaries
 
 ## Setup
 
