@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import pdfToText from 'react-pdftotext';
 import { useNavigate } from "react-router-dom";
 import config from '../../config.json';
-import { Loader2 } from "lucide-react";
 
 const UploadPage: React.FC = () => {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
