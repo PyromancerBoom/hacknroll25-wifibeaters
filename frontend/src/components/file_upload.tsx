@@ -6,13 +6,6 @@
     disabled?: boolean;
     }
 
-    function extractText(event) {
-        const file = event.target.files[0]
-        pdfToText(file)
-            .then(text => console.log(text))
-            .catch(error => console.error("Failed to extract text from pdf"))
-    }
-
     const FileUpload: React.FC<FileUploadProps> = ({
     maxFileSizeMB = 5,
     disabled = false,

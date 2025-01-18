@@ -63,7 +63,7 @@ const HighlightPage: React.FC = () => {
   useEffect(() => {
     // Initialize audio sources
     audioRefs.current.forEach((audio, index) => {
-      audio.src = audioFiles[index];
+      audio.src = audioFiles[index] || '';
     });
 
     // Play the first audio immediately on mount

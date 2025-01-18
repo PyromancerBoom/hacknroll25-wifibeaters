@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useState } from "react";
 import pdfToText from 'react-pdftotext';
 import { useNavigate } from "react-router-dom";
 import config from '../../config.json';
@@ -68,7 +68,7 @@ const UploadPage: React.FC = () => {
           console.log(formattedText);
           navigate("/song_page", { state: { formattedText } });
         } catch (error) {
-          setError(error.message);
+          setError((error as Error).message);
         }
       } catch (error) {
         console.error("Failed to extract text from PDF:", error);

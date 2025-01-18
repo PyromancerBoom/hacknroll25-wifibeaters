@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import { Play, Pause, Plus, Trash2, Maximize2, Minimize2 } from "lucide-react";
+import { Play, Pause, Plus, Trash2 } from "lucide-react";
 
 interface AudioFile {
   id: string;
