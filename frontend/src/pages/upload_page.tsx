@@ -63,16 +63,16 @@ const UploadPage: React.FC = () => {
           // Handle successful response
           const data = await response.json();
 
-          const textArray = [];
-          const emotionArray = [];
-          const musicArray = [];
+          const textArray: string[] = [];
+          const emotionArray: string[] = [];
+          const musicArray: string[] = [];
 
-          data.classified_chunks.forEach(chunk => {
+          data.classified_chunks.forEach((chunk: { text: string; emotion: string; music: string }) => {
             textArray.push(chunk.text);
             emotionArray.push(chunk.emotion);
             musicArray.push(chunk.music);
           });
-
+          
           const formattedTextArrays = {
             text: textArray,
             emotion: emotionArray,
