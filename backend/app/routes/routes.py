@@ -20,6 +20,7 @@ async def classify_sample():
 
 @router.post("/classifytext")
 async def classifytext(request: Request):
+    print(" ======= Recieved Request Please Wait ======== ")
     data = await request.json()
     # print("Data received:", data)
     extractedText = data.get("text")

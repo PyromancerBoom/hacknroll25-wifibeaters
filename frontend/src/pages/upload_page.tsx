@@ -63,6 +63,8 @@ const UploadPage: React.FC = () => {
   
           // Handle successful response
           const data = await response.json();
+          
+          // TODO: UPDATE CODE HERE, the new format doens't include "formattedText"
           const formattedText = data.formatted_text;
           console.log(formattedText);
           navigate("/song_page", { state: { formattedText } });
