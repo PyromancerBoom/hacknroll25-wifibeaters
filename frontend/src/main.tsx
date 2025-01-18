@@ -10,6 +10,7 @@ createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <Router>
       <Routes>
+        <Route path="/" element={<UploadPage />} />
         <Route path="/upload_page" element={<UploadPage />} />
         <Route path="/song_page" element={<SongPage />} />
       </Routes>
