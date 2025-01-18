@@ -70,6 +70,46 @@
   margin-left: 0px;
 }
 
+.happy-background {
+  background-color: #c99d24;
+  border-radius: 12px;  /* Adjust for more or less rounded corners */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);  /* Adds a subtle shadow */
+  padding: 12px;  /* Adjust padding inside the div */
+  color: #242424;
+  margin: 10px;  /* Adds spacing around the element */
+  margin-left: 0px;
+}
+
+.sad-background {
+  background-color: #3b82d4;
+  border-radius: 12px;  /* Adjust for more or less rounded corners */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);  /* Adds a subtle shadow */
+  padding: 12px;  /* Adjust padding inside the div */
+  color: #242424;
+  margin: 10px;  /* Adds spacing around the element */
+  margin-left: 0px;
+}
+
+.relaxed-background {
+  background-color: #9fbdc9;
+  border-radius: 12px;  /* Adjust for more or less rounded corners */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);  /* Adds a subtle shadow */
+  padding: 12px;  /* Adjust padding inside the div */
+  color: #242424;
+  margin: 10px;  /* Adds spacing around the element */
+  margin-left: 0px;
+}
+
+.angry-background {
+  background-color: #a81448;
+  border-radius: 12px;  /* Adjust for more or less rounded corners */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);  /* Adds a subtle shadow */
+  padding: 12px;  /* Adjust padding inside the div */
+  color: #242424;
+  margin: 10px;  /* Adds spacing around the element */
+  margin-left: 0px;
+}
+
 .shadowed-text {
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2), -1px -1px 2px rgba(0, 0, 0, 0.1);
 }
