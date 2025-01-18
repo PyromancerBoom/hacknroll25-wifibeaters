@@ -4,3 +4,5 @@ backend/app/__pycache__/
 frontend/node_modules/
 __pycache__/
 *.pdf
+
+node_modules/

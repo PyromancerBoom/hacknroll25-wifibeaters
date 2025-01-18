@@ -29,15 +29,15 @@ async def classifytext(request: Request):
     extractedText = data.get("text")
 
     # ========== Core LOGIC, NOT to be removed ==========
-    # word_limit = 200
-    # classified_chunks = process_text(extractedText, word_limit)
-    # classified_chunks_with_music = get_matching_music(classified_chunks)
-    # return {"status": "success", "classified_chunks": classified_chunks_with_music}
+    word_limit = 200
+    classified_chunks = process_text(extractedText, word_limit)
+    classified_chunks_with_music = get_matching_music(classified_chunks)
+    return {"status": "success", "classified_chunks": classified_chunks_with_music}
 
     # ============ Mock Data for Testing ============
     # Load sample_output_gemini.json for mock data testing
-    file_path = os.path.join(os.path.dirname(__file__), '../repository/data/sample_output_gemini.json')
-    with open(file_path, 'r', encoding='utf-8') as file:
-        sample_output = json.load(file)
+    # file_path = os.path.join(os.path.dirname(__file__), '../repository/data/sample_output_gemini.json')
+    # with open(file_path, 'r', encoding='utf-8') as file:
+    #     sample_output = json.load(file)
 
-    return {"status": "success", "classified_chunks": sample_output["classified_chunks"]}
+    # return {"status": "success", "classified_chunks": sample_output["classified_chunks"]}

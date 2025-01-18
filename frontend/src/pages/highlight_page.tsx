@@ -125,7 +125,7 @@ const HighlightPage: React.FC = () => {
           }}
         >
 
-          {backgrounds.map((bgClass, index) => (
+          {backgrounds.map((bgClass: string, index: number) => (
             <div
               key={index}
               className={bgClass}
