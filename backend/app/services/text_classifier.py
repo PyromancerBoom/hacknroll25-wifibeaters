@@ -26,10 +26,10 @@ def classify_emotion(paragraph: str) -> str:
         response = call_llm(prompt=prompt)
         
         # Check for rate limit exceeded
-        if response.get('status_code') == 429:
-            print("Rate limit exceeded, waiting")
-            time.sleep(15)
-            continue
+        # if response.get('status_code') == 429:
+        #     print("Rate limit exceeded, waiting")
+        #     time.sleep(15)
+        #     continue
 
         # Extract the emotion from the response
         if 'candidates' in response and len(response['candidates']) > 0:
