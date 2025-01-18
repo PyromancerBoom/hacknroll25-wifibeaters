@@ -9,10 +9,10 @@ const HighlightPage: React.FC = () => {
     "relaxed-background",
   ];
   const audioFiles = [
-    "/audio/rock.00000.wav", // Replace with your correct public path
-    "/audio/pop.00000.wav",
-    "/audio/hiphop.00000.wav",
-    "/audio/country.00000.wav",
+    "https://raw.githubusercontent.com/ty4g1/music-library/main/audio/1975%20-%20Josh%20Kirsch%20%20Media%20Right%20Productions%20%20Royalty%20Free%20Music%20-%20No%20Copyright%20Music%20%20YT%20Music.wav",
+    "https://raw.githubusercontent.com/ty4g1/music-library/main/audio/7th%20Floor%20Tango%20-%20Silent%20Partner%20%20Royalty%20Free%20Music%20-%20No%20Copyright%20Music%20%20YouTube%20Music.wav",,
+    "https://raw.githubusercontent.com/ty4g1/music-library/main/audio/8th%20World%20Wonder%20-%20RKVC%20%20Royalty%20Free%20Music%20-%20No%20Copyright%20Music.wav",
+    "https://raw.githubusercontent.com/ty4g1/music-library/main/audio/A%20Free%20Night%20In%20Bushwick%20-%20William%20Rosati%20%20Royalty%20Free%20Music%20-%20No%20Copyright%20Music.wav",
   ];
 
   const audioRefs = useRef<HTMLAudioElement[]>(
@@ -84,7 +84,7 @@ const HighlightPage: React.FC = () => {
 
   return (
     <div className="container">
-      <h2 className="shadowed-text">Let's get listening. 🎧</h2>
+      <h1 className="shadowed-text">Let's get listening. 🎧</h1>
 
       <div
         className="carousel"
