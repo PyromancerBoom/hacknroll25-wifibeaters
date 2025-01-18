@@ -14,6 +14,7 @@ const SongPage: React.FC<SongPageProps> = ( { text }) => {
   const texty = location.state?.text || "No text provided.";
 
   return (
+    <div className="container">
     <div className="white-background">
         <h3 className="font-bold">Extracted Text from PDF</h3>
         <span className="bg-highlight-yellow">{texty}</span> {/* Highlight specific sentence*/}
@@ -32,6 +33,7 @@ const SongPage: React.FC<SongPageProps> = ( { text }) => {
 
 
         {/* <DefaultButton text = "Return" onClick={() => navigate("/upload_page")}/> */}
+    </div>
     </div>
 );
 };

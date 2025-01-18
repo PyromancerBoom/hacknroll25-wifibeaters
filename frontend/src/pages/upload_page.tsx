@@ -57,7 +57,7 @@ const UploadPage: React.FC = () => {
   };
 
   return (
-      <div>
+    <div className="container">
           <h1>
           Insert Project Name 🎵
           </h1>

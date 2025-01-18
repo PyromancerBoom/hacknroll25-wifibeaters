@@ -99,10 +99,21 @@ a:hover {
 body {
   margin: 0;
   display: flex;
-  place-items: center;
+  justify-content: center;
+  align-items: center;
   min-width: 320px;
   min-height: 100vh;
-  margin-left: 30px;  /* Added left margin */
+  background-color: #242424;
+}
+
+.container {
+  width: 80%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #1a1a1a;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
 }
 
 h1 {
@@ -143,5 +154,9 @@ button:focus-visible {
 
   button {
     background-color: #f9f9f9;
+  }
+
+  .container {
+    background-color: #ffffff;
   }
 }
