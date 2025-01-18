@@ -60,5 +60,6 @@ def format_text(raw_text: str, word_limit: int = 10) -> str:
     if current_chunk:
         chunks.append(" ".join(current_chunk))
 
-    chunked_text = "\n".join(chunks)
-    return chunked_text
+    chunked_arr = chunks
+    chunked_text = "\n\n".join(chunks)
+    return chunked_text, chunked_arr

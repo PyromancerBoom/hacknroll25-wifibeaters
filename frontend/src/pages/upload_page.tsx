@@ -49,7 +49,7 @@ const UploadPage: React.FC = () => {
         const extractedText = await pdfToText(selectedFile);
         // console.log("FOUND THIS -------- " + extractedText)
         try {
-          const response = await fetch(`${config.backendUrl}/usertext`, {
+          const response = await fetch(`${config.backendUrl}/classifytext`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',

@@ -18,11 +18,12 @@ async def classify_sample():
     response = classify_sample_text()
     return response
 
-@router.post("/usertext")
-async def usertext(request: Request):
+@router.post("/classifytext")
+async def classifytext(request: Request):
     data = await request.json()
+    print("Data received:", data)
     extractedText = data.get("text")
 
-    word_limit = 20
-    formatted_text = format_text(extractedText, word_limit)
-    return {"status": "success", "formatted_text": formatted_text}
+    word_limit = 200
+    chunked_text, chunks = format_text(extractedText, word_limit)
+    return {"status": "success", "formatted_text": chunked_text, "chunks": chunks}
