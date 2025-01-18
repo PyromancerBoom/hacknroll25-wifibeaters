@@ -14,7 +14,7 @@ const HighlightPage: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const texts = formattedTextArrays.text;
-  const backgrounds = formattedTextArrays.emotion.map(background => `${background}-background`);
+  const backgrounds = (formattedTextArrays.emotion as string[]).map((background: string) => `${background}-background`);
   const audioFiles = formattedTextArrays.music;
 
   console.log(texts);
