@@ -1,0 +1,6 @@
+**/__pycache__/
+backend/venv/
+backend/app/__pycache__/
+frontend/node_modules/
+__pycache__/
+*.pdf
