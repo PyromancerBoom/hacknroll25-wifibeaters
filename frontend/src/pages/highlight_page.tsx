@@ -108,13 +108,14 @@ const HighlightPage: React.FC = () => {
             transition: "transform 0.5s ease-in-out",
           }}
         >
+
           {backgrounds.map((bgClass, index) => (
             <div
               key={index}
               className={bgClass}
               style={{
                 minWidth: "100%",
-                height: "100vh", // Adjust height as needed
+                height: "100vh",
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
@@ -122,7 +123,7 @@ const HighlightPage: React.FC = () => {
                 color: "white",
               }}
             >
-              {`Background for ${bgClass.split("-")[0]} text`}
+              {texts[index]}
             </div>
           ))}
         </div>
