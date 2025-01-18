@@ -33,8 +33,6 @@ const SongPage: React.FC<SongPageProps> = ({ text }) => {
           className="bg-highlight-yellow"
           dangerouslySetInnerHTML={{ __html: formattedText }}
         />
-        <HighlightWithDraggableMarkers text = {firstSentence} className = "bg-highlight-happy"></HighlightWithDraggableMarkers>
-        <HighlightWithDraggableMarkers text = {remainingSentences} className = "bg-highlight-sad"></HighlightWithDraggableMarkers>
       </div>
 
       <BackToHome />
