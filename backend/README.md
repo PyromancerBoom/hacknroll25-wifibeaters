@@ -53,7 +53,7 @@ cd backend
    Use the following command to run the FastAPI server:
 
 ```powershell
-   uvicorn app.main:app --reload
+   uvicorn app.server:app --reload
 ```
 
 This will start the FastAPI server, and you can access it at `http://127.0.0.1:8000`.

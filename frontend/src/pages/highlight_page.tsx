@@ -1,7 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useLocation } from 'react-router-dom';
 
-
 const HighlightPage: React.FC = () => {
   const { state } = useLocation();
   const { formattedTextArrays } = state || {};
@@ -16,10 +15,6 @@ const HighlightPage: React.FC = () => {
   const texts = formattedTextArrays.text;
   const backgrounds = (formattedTextArrays.emotion as string[]).map((background: string) => `${background}-background`);
   const audioFiles = formattedTextArrays.music;
-
-  console.log(texts);
-  console.log(backgrounds);
-  console.log(audioFiles);
 
   const audioRefs = useRef<HTMLAudioElement[]>(
     audioFiles.map(() => new Audio())
@@ -71,42 +66,26 @@ const HighlightPage: React.FC = () => {
     audioRefs.current.forEach((audio, index) => {
       audio.src = audioFiles[index] || '';
     });
-  
+
     // Play the first audio immediately on mount
     const firstAudio = audioRefs.current[0];
     if (firstAudio) {
       firstAudio.volume = 1;
       firstAudio.play().catch((err) => console.error("Audio playback error:", err));
     }
-  
-    // Add event listeners for keydown events
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "ArrowLeft") {
-        handleArrowClick("left");
-      } else if (event.key === "ArrowRight") {
-        handleArrowClick("right");
-      } else if (event.key === " ") {  // Spacebar to move to the next slide
-        handleArrowClick("right");
-      }
-    };
-  
-    window.addEventListener("keydown", handleKeyDown);
-  
+
     return () => {
-      window.removeEventListener("keydown", handleKeyDown);
-  
-      // Cleanup audio when leaving the page
+      // Stop all audio when leaving the page
       audioRefs.current.forEach((audio) => {
         audio.pause();
         audio.currentTime = 0;
       });
     };
-  }, [currentSlide]);
-  
+  }, []);
 
   return (
     <div className="container">
-      <h1 className="shadowed-text">Let's get listening. 🎧</h1>
+      <h2 className="shadowed-text">Let's get listening. 🎧</h2>
 
       <div
         className="carousel"
@@ -124,8 +103,7 @@ const HighlightPage: React.FC = () => {
             transition: "transform 0.5s ease-in-out",
           }}
         >
-
-          {backgrounds.map((bgClass: string, index: number) => (
+          {backgrounds.map((bgClass, index) => (
             <div
               key={index}
               className={bgClass}
@@ -141,7 +119,7 @@ const HighlightPage: React.FC = () => {
             >
               {texts[index]}
             </div>
-          ))}
+          ))};
         </div>
       </div>
 
@@ -192,8 +170,6 @@ const HighlightPage: React.FC = () => {
       <div className="prompt" style={{ textAlign: "center", marginTop: "1rem" }}>
         <p>Press the <strong>Left</strong> or <strong>Right</strong> arrows or <strong>Space</strong> key to navigate!</p>
       </div>
-
-      
     </div>
   );
 };
