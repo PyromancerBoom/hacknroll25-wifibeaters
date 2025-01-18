@@ -10,25 +10,21 @@ def chunk_text(text: str, chunk_size: int = 500) -> List[str]:
 
 def classify_emotion(text_chunk: str) -> str:
     """
-    Classifies the emotion of a given text chunk using the Gemini API.
+    Classifies the emotion of a given text chunk using LLM
     """
-    response = call_gemini_api(API_KEY, text_chunk)
-    # Assuming the response contains an 'emotion' field
+    response = call_llm(text_chunk)
     emotion = response.get('emotion', 'unknown')
     return emotion
 
-def classify_text(text: str) -> List[Dict[str, str]]:
+def classify_text(text: str, api_key: str) -> List[Dict[str, str]]:
     """
-    Classifies the emotions of chunks of the input text.
-    
-    :param text: The input text to classify.
-    :return: A list of dictionaries with text chunks and their classified emotions.
+    Classifies the emotions of chunks of the input text
     """
     chunks = chunk_text(text)
     classified_chunks = []
     
     for chunk in chunks:
-        emotion = classify_emotion(chunk)
+        emotion = classify_emotion(chunk, api_key)
         classified_chunks.append({"text": chunk, "emotion": emotion})
     
     return classified_chunks

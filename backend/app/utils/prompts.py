@@ -6,4 +6,8 @@ basic_prompt = """
     angry, relaxed, happy, sad
     """
 
+joke_prompt = """
+    Tell me a 2-3 line dark joke, be unhinged.
+    """
+
 # other prompt below vvvv uwu

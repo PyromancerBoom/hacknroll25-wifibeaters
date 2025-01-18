@@ -1,28 +1,32 @@
 import requests
 from fastapi import HTTPException
+import os
+from dotenv import load_dotenv
+from app.utils.config import load_config
 
-GEMINI_API_URL = "https://api.gemini.com/v1/endpoint"  # Replace with actual URL
+load_dotenv()
 
-def call_llm(api_key: str, prompt: str) -> dict:
+config = load_config()
+GEMINI_API_URL = config.get("gemini_api_url")
+API_KEY = os.getenv("GEMINI_API_KEY")
+
+def call_llm(prompt: str, content: str = None) -> dict:
     """
-    Calls the Gemini API with the given prompt and returns the response.
-    
-    :param api_key: The API key for authentication.
-    :param prompt: The input prompt text to send to the Gemini API.
-    :return: The JSON response from the Gemini API.
+    Calls the Gemini API with the given prompt and optional content.
     """
     headers = {
         "Content-Type": "application/json"
     }
+    
     payload = {
-        "contents": [{
-            "parts": [{"text": prompt}]
-        }]
+        "contents": [{"parts": [{"text": f"{content} {prompt}" if content else prompt}]}]
     }
-    params = {"key": api_key}
+    
+    params = {"key": API_KEY}
 
     response = requests.post(GEMINI_API_URL, headers=headers, json=payload, params=params)
     
+    # Handle API response
     if response.status_code == 200:
         return response.json()
     elif response.status_code == 401:
