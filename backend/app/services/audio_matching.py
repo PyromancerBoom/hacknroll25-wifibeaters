@@ -1,8 +1,10 @@
 import json
 import random
+import os
 
 def get_matching_music(classified_chunks):
-    with open('backend/app/repository/data/processed_music_database.json', 'r') as file:
+    file_path = os.path.join(os.path.dirname(__file__), '../repository/data/processed_music_database.json')
+    with open(file_path, 'r') as file:
         music_database = json.load(file)
     
     music = []
@@ -54,13 +56,13 @@ def get_matching_music(classified_chunks):
     
     return music
 
-# Load from JSON
-with open('backend/app/repository/data/sample_output_gemini.json', 'r', encoding='utf-8') as file:
-    sample_output = json.load(file)
+# # Load from JSON
+# with open('backend/app/repository/data/sample_output_gemini.json', 'r', encoding='utf-8') as file:
+#     sample_output = json.load(file)
 
-classified_chunks = sample_output["classified_chunks"]
+# classified_chunks = sample_output["classified_chunks"]
 
-# Now you can pass this to your function
-result = get_matching_music(classified_chunks)
+# # Now you can pass this to your function
+# result = get_matching_music(classified_chunks)
 
-print(result)
+# print(result)
