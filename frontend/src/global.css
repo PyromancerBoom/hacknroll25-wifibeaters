@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  body {
+    margin-left: 30px; /* Ensure this is not being overridden */
+  }
+}
 
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -71,3 +76,4 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
