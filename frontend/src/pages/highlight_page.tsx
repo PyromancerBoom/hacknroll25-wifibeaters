@@ -1,19 +1,25 @@
 import React, { useState, useRef, useEffect } from "react";
+import { useLocation } from 'react-router-dom';
+
 
 const HighlightPage: React.FC = () => {
+  const { state } = useLocation();
+  const { formattedTextArrays } = state || {};
+
+  console.log("formta");
+  console.log(formattedTextArrays);
+
+  // if (!formattedText) return <div>Loading...</div>;
+
   const [currentSlide, setCurrentSlide] = useState(0);
-  const backgrounds = [
-    "happy-background",
-    "sad-background",
-    "angry-background",
-    "relaxed-background",
-  ];
-  const audioFiles = [
-    "https://raw.githubusercontent.com/ty4g1/music-library/main/audio/1975%20-%20Josh%20Kirsch%20%20Media%20Right%20Productions%20%20Royalty%20Free%20Music%20-%20No%20Copyright%20Music%20%20YT%20Music.wav",
-    "https://raw.githubusercontent.com/ty4g1/music-library/main/audio/7th%20Floor%20Tango%20-%20Silent%20Partner%20%20Royalty%20Free%20Music%20-%20No%20Copyright%20Music%20%20YouTube%20Music.wav",,
-    "https://raw.githubusercontent.com/ty4g1/music-library/main/audio/8th%20World%20Wonder%20-%20RKVC%20%20Royalty%20Free%20Music%20-%20No%20Copyright%20Music.wav",
-    "https://raw.githubusercontent.com/ty4g1/music-library/main/audio/A%20Free%20Night%20In%20Bushwick%20-%20William%20Rosati%20%20Royalty%20Free%20Music%20-%20No%20Copyright%20Music.wav",
-  ];
+
+  const texts = formattedTextArrays.text;
+  const backgrounds = formattedTextArrays.emotion.map(background => `${background}-background`);
+  const audioFiles = formattedTextArrays.music;
+
+  console.log(texts);
+  console.log(backgrounds);
+  console.log(audioFiles);
 
   const audioRefs = useRef<HTMLAudioElement[]>(
     audioFiles.map(() => new Audio())

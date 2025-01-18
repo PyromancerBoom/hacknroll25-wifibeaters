@@ -62,11 +62,25 @@ const UploadPage: React.FC = () => {
   
           // Handle successful response
           const data = await response.json();
-          
-          // TODO: UPDATE CODE HERE, the new format doens't include "formattedText"
-          const formattedText = data.formatted_text;
-          console.log(formattedText);
-          navigate("/song_page", { state: { formattedText } });
+
+          const textArray = [];
+          const emotionArray = [];
+          const musicArray = [];
+
+          data.classified_chunks.forEach(chunk => {
+            textArray.push(chunk.text);
+            emotionArray.push(chunk.emotion);
+            musicArray.push(chunk.music);
+          });
+
+          const formattedTextArrays = {
+            text: textArray,
+            emotion: emotionArray,
+            music: musicArray
+          };
+
+  // Navigate to the highlight page and pass the state
+  navigate("/highlight_page", { state: { formattedTextArrays } });
         } catch (error) {
           setError((error as Error).message);
         }
