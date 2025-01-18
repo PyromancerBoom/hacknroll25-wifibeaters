@@ -169,6 +169,8 @@ const HighlightPage: React.FC = () => {
       <div className="prompt" style={{ textAlign: "center", marginTop: "1rem" }}>
         <p>Press the <strong>Left</strong> or <strong>Right</strong> arrows or <strong>Space</strong> key to navigate!</p>
       </div>
+
+      
     </div>
   );
 };

@@ -13,7 +13,7 @@ createRoot(document.getElementById('root')!).render(
       <Routes>
         <Route path="/" element={<UploadPage />} />
         <Route path="/upload_page" element={<UploadPage />} />
-        <Route path="/song_page" element={<SongPage />} />
+        {/* <Route path="/song_page" element={<SongPage />} /> */}
         <Route path="/highlight_page" element={<HighlightPage />} />
       </Routes>
     </Router>
