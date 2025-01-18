@@ -1,6 +1,7 @@
 import requests
 from typing import List, Dict
 from app.services.llm import call_llm
+from app.utils.prompts import joke_prompt, basic_prompt
 
 def chunk_text(text: str, chunk_size: int = 500) -> List[str]:
     """
