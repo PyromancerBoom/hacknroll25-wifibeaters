@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const HighlightWithDraggableMarkers = ({ text }: { text: string }) => {
+const HighlightWithDraggableMarkers = ({ text, className }: { text: string, className: string  }) => {
   const [highlightStart, setHighlightStart] = useState(0);
   const [highlightEnd, setHighlightEnd] = useState(text.length);
   const [markerPositions, setMarkerPositions] = useState({
@@ -34,7 +34,7 @@ const HighlightWithDraggableMarkers = ({ text }: { text: string }) => {
   return (
     <div className="highlight-container">
       <span>{beforeHighlight}</span>
-      <span className="bg-highlight-sad" style={{ position: "relative" }}>
+      <span className={className} style={{ position: "relative" }}>
         <span
           className="highlight-start"
           style={{
