@@ -1,27 +1,48 @@
 import React, {useState} from "react";
 import DefaultButton from "../components/default_button";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
-const SongPage: React.FC = () => {
+interface SongPageProps {
+  text: string;
+}
+
+const SongPage: React.FC<SongPageProps> = ( { text }) => {
   const handleClick = () => {};
   const navigate = useNavigate();
 
+  const location = useLocation();
+  const texty = location.state?.text || "No text provided.";
+
   return (
-    <div>
-        <div className={`
-      flex items-center justify-center w-12 h-12 
-      bg-white text-white rounded-full 
-      transition-all duration-300 ease-in-out 
-      outline-none hover:bg-primary-70 
-      active:bg-primary-80 
-      focus:ring-4 focus:ring-primary-20 
-      cursor-pointer
-    `}>
-            testing testing
-        </div>
-        <DefaultButton text = "Return" onClick={() => navigate("/upload_page")}/>
+    <div className="white-background">
+        <h3 className="font-bold">Extracted Text from PDF</h3>
+        <span className="bg-highlight-yellow">{texty}</span> {/* Highlight specific sentence*/}
+
+        <span className="bg-highlight-happy">
+          <span className="highlight-start"></span>
+            This is the highlighted text. It starts with an image at the beginning and ends with an image at the end.
+          <span className="highlight-end"></span>
+        </span>
+
+        <span className="bg-highlight-sad">
+          <span className="highlight-start"></span>
+          Another piece of cool text. It starts with an image at the beginning and ends with an image at the end.
+          <span className="highlight-end"></span>
+        </span>
+
+
+        {/* <DefaultButton text = "Return" onClick={() => navigate("/upload_page")}/> */}
     </div>
-  );
+);
 };
 
 export default SongPage;
+
+
+
+
+
+
+
+
+

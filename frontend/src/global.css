@@ -2,10 +2,73 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  body {
-    margin-left: 30px; /* Ensure this is not being overridden */
-  }
+
+.highlight-container {
+  font-size: 16px;
+  line-height: 1.5;
+  white-space: pre-wrap; /* Preserve newlines and spaces */
+  position: relative;
+}
+
+.bg-highlight-sad {
+  background-color: #3b82d4; /* Blue background */
+  font-weight: bold;
+  padding: 0.2em 0.4em;
+  position: relative; /* Needed for marker positioning */
+  display: inline-block;
+}
+
+.highlight-start,
+.highlight-end {
+  background-image: url('./assets/image.jpg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  display: inline-block;
+  height: 20px;
+  width: 20px;
+  vertical-align: middle;
+  position: absolute;
+  cursor: grab;
+}
+
+.highlight-start {
+  left: -20px; /* Adjust to position correctly at the start */
+}
+
+.highlight-end {
+  right: -20px; /* Adjust to position correctly at the end */
+}
+
+.bg-highlight-happy {
+    background-color: #c99d24; /* Tailwind's yellow-300 equivalent */
+    font-weight: bold;
+    padding: 0.2em 0.4em;
+}
+
+.bg-highlight-sad {
+  background-color: #3b82d4; /* Tailwind's yellow-300 equivalent */
+  font-weight: bold;
+  padding: 0.2em 0.4em;
+}
+
+.bg-highlight-relaxed {
+  background-color: #9fbdc9; /* Tailwind's yellow-300 equivalent */
+  font-weight: bold;
+  padding: 0.2em 0.4em;
+}
+
+.bg-highlight-angry {
+  background-color: #a81448; /* Tailwind's yellow-300 equivalent */
+  font-weight: bold;
+  padding: 0.2em 0.4em;
+}
+
+.white-background {
+  background-color: white;
+  border-radius: 12px;  /* Adjust for more or less rounded corners */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);  /* Adds a subtle shadow */
+  padding: 12px;  /* Adjust padding inside the div */
+  color: #242424;
 }
 
 :root {
@@ -28,6 +91,7 @@ a {
   color: #646cff;
   text-decoration: inherit;
 }
+
 a:hover {
   color: #535bf2;
 }
@@ -38,6 +102,7 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  margin-left: 30px;  /* Added left margin */
 }
 
 h1 {
@@ -56,9 +121,11 @@ button {
   cursor: pointer;
   transition: border-color 0.25s;
 }
+
 button:hover {
   border-color: #646cff;
 }
+
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
@@ -69,11 +136,12 @@ button:focus-visible {
     color: #213547;
     background-color: #ffffff;
   }
+
   a:hover {
     color: #747bff;
   }
+
   button {
     background-color: #f9f9f9;
   }
 }
-

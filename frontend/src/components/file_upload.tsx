@@ -48,10 +48,9 @@
             setSelectedFile(file);
             setHelperText("File successfully uploaded.");
     
-            // Extract text from the PDF
             try {
                 const text = await pdfToText(file);
-                console.log(text); // Do something with the extracted text (e.g., display it)
+                console.log(text);
             } catch (error) {
                 console.error("Failed to extract text from PDF:", error);
                 setHelperText("Failed to extract text from PDF.");
@@ -72,7 +71,6 @@
 
     return (
         <div
-        className={`flex flex-col w-full max-w-[400px] font-sans ${disabled ? "pointer-events-none cursor-not-allowed" : ""}`}
         >
         <label className="cursor-pointer block w-full">
             <input
