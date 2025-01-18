@@ -3,13 +3,15 @@ from app.routes.routes import router as router
 from fastapi.middleware.cors import CORSMiddleware
 import os
 from dotenv import load_dotenv
+import uvicorn
 
 load_dotenv()
 
 app = FastAPI()
 
 # Add CORS middleware
-origins = ["http://0.0.0.0:8000", "*", "http://localhost:8000/"]
+origins = ["http://0.0.0.0:8000", "*"]
+
 
 app.add_middleware(
     CORSMiddleware,
