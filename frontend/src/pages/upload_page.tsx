@@ -56,17 +56,32 @@ const UploadPage: React.FC = () => {
     }
   };
 
+  const fileInputRef = React.useRef<HTMLInputElement>(null);
+
   return (
     <div className="container">
       <h1>Insert Project Name 🎵</h1>
-      <input type="file" onChange={handleFileChange} accept="application/pdf" />
+      <h3>Subtitle here very cool very nice</h3>
+      <button onClick={() => fileInputRef.current?.click()} className="white-background">
+        Select PDF File
+      </button>
+      <span>                                                                </span>
+      <button onClick={handleSubmit} className = "white-background float-right">Submit</button>
+      <input
+        type="file"
+        ref={fileInputRef}
+        onChange={handleFileChange}
+        accept="application/pdf"
+        style={{ display: 'none' }}
+      />
       {error && <p className="text-red-500 mt-2">{error}</p>}
       {pdfUrl && (
         <div style={{ height: '600px', marginTop: '50px' }}>
           <iframe src={pdfUrl} width="100%" height="100%" />
         </div>
       )}
-      <button onClick={handleSubmit}>Submit</button>
+
+      
     </div>
   );
 };

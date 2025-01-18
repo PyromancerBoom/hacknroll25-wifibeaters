@@ -31,6 +31,14 @@
   cursor: grab;
 }
 
+.left-align {
+  float:left;
+}
+
+.right-align {
+  float:right;
+}
+
 .highlight-start {
   left: -20px; /* Adjust to position correctly at the start */
 }

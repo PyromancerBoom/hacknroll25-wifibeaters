@@ -32,7 +32,7 @@ const SongPage: React.FC<SongPageProps> = ( { text }) => {
         </span>
 
 
-        {/* <DefaultButton text = "Return" onClick={() => navigate("/upload_page")}/> */}
+        <DefaultButton text = "Return" onClick={() => navigate("/upload_page")}/>
     </div>
     </div>
 );
