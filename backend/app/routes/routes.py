@@ -1,7 +1,7 @@
 from fastapi import APIRouter
 from app.services.llm import call_llm
+from app.services.text_classifier import classify_sample_text
 from app.utils.prompts import joke_prompt
-from app.utils.sample_text import get_sample_text
 router = APIRouter()
 
 @router.get("/ping")
@@ -15,7 +15,7 @@ async def pingllm():
 
 @router.get("/classifysample")
 async def classify_sample():
-    sample_text = get_sample_text()
+    response = classify_sample_text()
     return response
 
 # @router.get("/pingllm")

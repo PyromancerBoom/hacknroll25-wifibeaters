@@ -19,7 +19,7 @@ def call_llm(prompt: str, content: str = None) -> dict:
     }
     
     payload = {
-        "contents": [{"parts": [{"text": f"{content} {prompt}" if content else prompt}]}]
+        "contents": [{"parts": [{"text": f"{prompt} {content}" if content else prompt}]}]
     }
     
     params = {"key": API_KEY}
