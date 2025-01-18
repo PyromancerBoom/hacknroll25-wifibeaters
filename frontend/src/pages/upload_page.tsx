@@ -2,11 +2,13 @@ import React, { useState } from "react";
 import pdfToText from 'react-pdftotext';
 import { useNavigate } from "react-router-dom";
 import config from '../../config.json';
+import { Loader2 } from "lucide-react";
 
 const UploadPage: React.FC = () => {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [pdfUrl, setPdfUrl] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const navigate = useNavigate();
 
   const handleFileChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -45,6 +47,7 @@ const UploadPage: React.FC = () => {
 
   const handleSubmit = async () => {
     if (selectedFile) {
+      setIsLoading(true);
       try {
         const extractedText = await pdfToText(selectedFile);
         try {
@@ -78,15 +81,17 @@ const UploadPage: React.FC = () => {
             emotion: emotionArray,
             music: musicArray
           };
-
-  // Navigate to the highlight page and pass the state
-  navigate("/highlight_page", { state: { formattedTextArrays } });
+          
+          // Navigate to the highlight page and pass the state
+          navigate("/highlight_page", { state: { formattedTextArrays } });
         } catch (error) {
           setError((error as Error).message);
         }
       } catch (error) {
         console.error("Failed to extract text from PDF:", error);
         setError("Failed to extract text from PDF.");
+      } finally {
+        setIsLoading(false);
       }
     } else {
       setError("Please upload a PDF file.");
@@ -96,31 +101,48 @@ const UploadPage: React.FC = () => {
   const fileInputRef = React.useRef<HTMLInputElement>(null);
 
   return (
-    
-    
-    <div className="container">
-      <script src="particles.js"></script>
-      <h1 className = "white-shadowed-text"> TunedIN 🎙️</h1>
-      <h3 className = "white-shadowed-text">A project generating entertaining and emotionally fitting background music from text-derived sentiments while displaying usually-boring reading material in flashcard-style. It doubles as a tool aiding in content-generation (podcasts, storytime videos) in deciding on music track progression.</h3>
-      <button onClick={() => fileInputRef.current?.click()} className="white-background shadowed-text">
-        Select PDF File
-      </button>
-      <button onClick={handleSubmit} className = "float-right white-background shadowe d-text">Submit</button>
-      <input
-        type="file"
-        ref={fileInputRef}
-        onChange={handleFileChange}
-        accept="application/pdf"
-        style={{ display: 'none' }}
-      />
-      {error && <p className="mt-2 text-red-500">{error}</p>}
-      {pdfUrl && (
-        <div style={{ height: '600px', marginTop: '50px' }}>
-          <iframe src={pdfUrl} width="100%" height="100%" />
-        </div>
+    <div className="relative">
+      {isLoading && (
+          <div className="loading-content" style={{
+            paddingLeft: '3rem'
+          }}>
+            <p>Processing, please wait...</p>
+          </div>
       )}
-
       
+      <div className="container">
+        <script src="particles.js"></script>
+        <h1 className="white-shadowed-text">TunedIN 🎙️</h1>
+        <h3 className="white-shadowed-text">A project generating entertaining and emotionally fitting background music from text-derived sentiments while displaying usually-boring reading material in flashcard-style. It doubles as a tool aiding in content-generation (podcasts, storytime videos) in deciding on music track progression.</h3>
+        <button 
+          onClick={() => fileInputRef.current?.click()} 
+          className="white-background shadowed-text"
+          disabled={isLoading}
+        >
+          Select PDF File
+        </button>
+        <button 
+          onClick={handleSubmit} 
+          className="float-right white-background shadowed-text"
+          disabled={isLoading}
+        >
+          Submit
+        </button>
+        <input
+          type="file"
+          ref={fileInputRef}
+          onChange={handleFileChange}
+          accept="application/pdf"
+          style={{ display: 'none' }}
+          disabled={isLoading}
+        />
+        {error && <p className="mt-2 text-red-500">{error}</p>}
+        {pdfUrl && (
+          <div style={{ height: '600px', marginTop: '50px' }}>
+            <iframe src={pdfUrl} width="100%" height="100%" />
+          </div>
+        )}
+      </div>
     </div>
   );
 };
