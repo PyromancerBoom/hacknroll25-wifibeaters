@@ -1,4 +1,4 @@
-# WiFi Beaters - HacknRoll 25 Project
+# TunedIN - HacknRoll 25 Project by WifiBeaters (Atharva, Priyansh, Jason)
 
 Welcome to **TunedIN**, a HacknRoll 25 project that leverages the power of machine learning to deliver awesome background music.
 
