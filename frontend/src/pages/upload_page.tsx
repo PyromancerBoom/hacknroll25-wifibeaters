@@ -50,7 +50,7 @@ const UploadPage: React.FC = () => {
       try {
         const extractedText = await pdfToText(selectedFile);
         try {
-          const response = await fetch("tunedinbackend.onrender.com/classifytext", {
+          const response = await fetch(`${config.backendUrl}/classifytext`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
