@@ -113,7 +113,7 @@ const HighlightPage: React.FC = () => {
             transition: all 0.3s ease;
             opacity: 0;
             transform: translateX(100%);
-            font-size: 1rem;
+            font-size: 1.16rem;
             line-height: 1.6;
             text-align: left;
             overflow-y: auto;
@@ -168,20 +168,29 @@ const HighlightPage: React.FC = () => {
 
       <div className="container">
         <h2 className="shadowed-text">Let's get listening. 🎧</h2>
-
+        <button 
+          style={{
+            border: '1px solid white'
+          }}
+          onClick={() => location.href = audioFiles[currentSlide]}
+        >
+          Download
+        </button>
         <div className="carousel">
           {backgrounds.map((bgClass, index) => (
-            <div
-              key={index}
-              className={`slide ${bgClass} ${
-                index === currentSlide 
-                  ? 'active'
-                  : index === (currentSlide - 1 + backgrounds.length) % backgrounds.length
-                  ? 'previous'
-                  : ''
-              }`}
-            >
-              {texts[index]}
+            <div>
+              <div
+                key={index}
+                className={`slide ${bgClass} ${
+                  index === currentSlide 
+                    ? 'active'
+                    : index === (currentSlide - 1 + backgrounds.length) % backgrounds.length
+                    ? 'previous'
+                    : ''
+                }`}
+              >
+                {texts[index]}
+              </div>
             </div>
           ))}
         </div>
