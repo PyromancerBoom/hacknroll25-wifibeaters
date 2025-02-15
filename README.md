@@ -2,6 +2,11 @@
 
 Welcome to **TunedIN**, a HacknRoll 25 project that leverages the power of machine learning to deliver awesome background music.
 
+• Built an AI-powered background music generator based on peer-reviewed research that assigns emotionally suitable music to text PDFs using ML-based mood detection.
+• Overcame rate limits, frontend glitches, and precision-complexity trade-offs to deliver a functional and engaging prototype.
+• Developed semi-supervised learning for song categorization and deployed a working frontend/backend solution.
+• Skills: Next.js, Python, FastAPI, ML (in python), Render, Vercel
+
 ## Table of Contents
 - [Overview](#overview)
 - [Technologies Used](#technologies-used)
